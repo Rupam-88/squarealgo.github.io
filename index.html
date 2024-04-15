@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+  <title>NextSquareAlgo</title>
+</head>
+<body>
+  <h1>Find next square number with previous 2 numbers</h1>
+  <p>Enter two numbers where the first (a) is greater than the second (b) by exactly 1.</p>
+  <input type="number" id="numberA" placeholder="Enter a">
+  <input type="number" id="numberB" placeholder="Enter b">
+  <button id="calculateButton" onclick="calculate()">Calculate</button>
+  <div id="result"></div>
+  <script>
+    function calculate() {
+      // Get references to input fields and result div (assuming these exist in your HTML)
+      const inputA = document.getElementById("numberA");
+      const inputB = document.getElementById("numberB");
+      const resultDiv = document.getElementById("result");
+
+      // Get user input and convert to integers
+      const a = parseInt(inputA.value);
+      const b = parseInt(inputB.value);
+
+      try {
+        // Validate input
+        if (a <= b || a - b !== 1) {
+          throw new Error("Invalid input: a must be greater than b and differ by exactly 1.");
+        }
+
+        // Calculate C^2 using the provided formula
+        const cSquared = ((a * a) - (b * b) + 2 + (a * a));
+
+        // Calculate and return C (square root of C^2)
+        const c = Math.sqrt(cSquared);
+
+        // Clear previous results (optional)
+        resultDiv.innerHTML = "";
+
+        // Display results using the returned c value
+        resultDiv.innerHTML = `C^2 = ${cSquared}<br>C = ${c}`;
+      } catch (error) {
+        resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
