@@ -40,9 +40,10 @@
         // Clear previous results (optional)
         resultDiv.innerHTML = "";
 
-            resultDiv.innerHTML = `Here is your next square number:<br>C^2 = ${cSquared}<br>C = ${c}`;
+        // Display results along with the statement
+        resultDiv.innerHTML = `Here is your next square number:<br>C^2 = ${cSquared}<br>C = ${c}`;
 
-      } catch (error) {
+       } catch (error) {
         resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
       }
     }
